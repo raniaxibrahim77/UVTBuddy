@@ -1,0 +1,27 @@
+.uvt-toolbar {
+  min-height: 96px;
+  padding: 16px 28px;
+  border-bottom: 2px solid #1f5aa6;
+}
+
+.uvt-logo {
+  width: 90px;
+}
+
+.uvt-name {
+  font-size: 26px;
+}
+
+.uvt-subtitle {
+  font-size: 16px;
+}
+
+.nav-links a,
+a[mat-button] {
+  font-size: 16px;
+  padding: 10px 14px;
+}
+
+.uvt-brand {
+  align-items: center;
+}

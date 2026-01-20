@@ -1,0 +1,212 @@
+<div class="page">
+  <div class="hero-title">
+    <h1>Welcome to UVT Buddy</h1>
+    <div class="hero-accent"></div>
+
+    <p class="subtitle">
+      Your integration assistant for new students: onboarding checklist and important
+      contacts.
+    </p>
+  </div>
+
+  <section class="grid">
+    <mat-card class="card">
+      <mat-card-title>
+        <mat-icon class="title-icon">account_circle</mat-icon>
+        Account
+      </mat-card-title>
+
+      <mat-card-subtitle>Sign in to save your progress</mat-card-subtitle>
+
+      <mat-card-content>
+        <div *ngIf="error" class="error">{{ error }}</div>
+
+        <ng-container *ngIf="!user; else loggedIn">
+          <form (ngSubmit)="login()" class="form">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                name="name"
+                [(ngModel)]="name"
+                [disabled]="loading"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                name="email"
+                [(ngModel)]="email"
+                autocomplete="username"
+                [disabled]="loading"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                name="password"
+                [(ngModel)]="password"
+                type="password"
+                autocomplete="current-password"
+                [disabled]="loading"
+              />
+            </mat-form-field>
+
+            <div class="actions">
+              <button
+                mat-flat-button
+                type="submit"
+                [disabled]="loading || !email || !password"
+              >
+                <mat-icon>login</mat-icon>
+                Login
+              </button>
+
+              <button
+                mat-stroked-button
+                color="accent"
+                type="button"
+                (click)="signup()"
+                [disabled]="loading || !email || !password"
+              >
+                <mat-icon>person_add</mat-icon>
+                Sign up
+              </button>
+
+              <mat-progress-spinner
+                *ngIf="loading"
+                diameter="22"
+                mode="indeterminate"
+              ></mat-progress-spinner>
+            </div>
+          </form>
+        </ng-container>
+
+        <ng-template #loggedIn>
+          <div class="userBox">
+            <div class="avatar">
+              {{ (user?.name || 'U').slice(0, 1).toUpperCase() }}
+            </div>
+
+            <div class="userText">
+              <div class="userName">{{ user?.name }}</div>
+              <div class="userEmail">{{ user?.email }}</div>
+
+              <div class="userStatus">
+              Status:
+                <span [class.admin]="user?.role === 'ADMIN'">
+                   Logged in as {{ user?.role | titlecase }}
+                </span>
+              </div>
+
+
+              <mat-chip-set class="userChips">
+                <mat-chip color="accent" selected>{{ user?.role }}</mat-chip>
+                <mat-chip *ngIf="user?.major">Major: {{ user?.major }}</mat-chip>
+              </mat-chip-set>
+            </div>
+          </div>
+
+          <mat-divider class="divider"></mat-divider>
+
+          <div class="actions">
+            <button mat-stroked-button color="primary" routerLink="/checklist">
+              Go to checklist
+            </button>
+
+            <button mat-stroked-button routerLink="/sessions">
+              Study sessions
+            </button>
+
+            <button mat-button color="warn" (click)="logout()">
+              Logout
+            </button>
+          </div>
+        </ng-template>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title>
+  <mat-icon class="title-icon">rocket_launch</mat-icon>
+  Quick start
+</mat-card-title>
+
+
+      <mat-card-subtitle>Do these first</mat-card-subtitle>
+
+      <mat-card-content class="quickstart">
+        <div class="step">
+          <div class="stepNum">1</div>
+          <div>
+            <div class="stepTitle">Finish onboarding checklist</div>
+            <div class="stepText">
+              Track the essential steps for your first weeks.
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="stepNum">2</div>
+          <div>
+            <div class="stepTitle">Find key contacts</div>
+            <div class="stepText">
+              Secretariat, Erasmus, student services, and more.
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="stepNum">3</div>
+          <div>
+            <div class="stepTitle">Browse events + map </div>
+            <div class="stepText">
+              Know what’s happening and where to be.
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button mat-flat-button color="primary" routerLink="/checklist">
+            Start
+          </button>
+          <button mat-button routerLink="/info">Info</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>
+
+<section class="secondary-section">
+<div class="section-header">
+  <h2>Explore UVT Buddy</h2>
+  <p>Discover the tools available to support your studies</p>
+</div>
+  <div class="secondary-grid">
+    <mat-card class="secondary-card">
+      <mat-icon class="secondary-icon">info</mat-icon>
+      <h3>UVT Info</h3>
+      <p>Key contacts, secretariat, Erasmus and student services.</p>
+      <a routerLink="/info">Open info</a>
+    </mat-card>
+
+    <mat-card class="secondary-card">
+      <mat-icon class="secondary-icon">forum</mat-icon>
+      <h3>Ask & Share</h3>
+      <p>Ask questions, share advice and helpful study notes.</p>
+      <a routerLink="/posts">Go to forum</a>
+    </mat-card>
+
+    <mat-card class="secondary-card">
+      <mat-icon class="secondary-icon">event</mat-icon>
+      <h3>Events</h3>
+      <p>See what’s happening at UVT and where to be.</p>
+      <a routerLink="/events">View events</a>
+    </mat-card>
+  </div>
+</section>
+

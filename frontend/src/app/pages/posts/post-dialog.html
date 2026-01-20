@@ -1,0 +1,76 @@
+<div class="dialog">
+  <div class="head">
+    <div>
+      <div class="type">{{ post.type }}</div>
+      <h2 class="title">{{ post.title }}</h2>
+      <div class="meta">
+        {{ post.author.name }} • {{ post.createdAt | date:'medium' }}
+      </div>
+    </div>
+
+    <button mat-stroked-button (click)="close()">Close</button>
+  </div>
+
+  <div class="content">
+    <p class="desc">{{ post.description }}</p>
+
+    <div class="meta2" *ngIf="post.course || post.major">
+      <span *ngIf="post.course">Course: {{ post.course }}</span>
+      <span *ngIf="post.major">Major: {{ post.major }}</span>
+    </div>
+
+    <mat-chip-set *ngIf="post.tags?.length">
+      <mat-chip *ngFor="let t of post.tags">{{ t }}</mat-chip>
+    </mat-chip-set>
+
+    <div class="images" *ngIf="post.imageUrls?.length">
+      <img class="img" *ngFor="let img of post.imageUrls" [src]="img" alt="post image" />
+    </div>
+
+    <mat-divider style="margin: 16px 0;"></mat-divider>
+
+    <h3>Comments</h3>
+
+    <div *ngIf="loading">Loading comments…</div>
+    <div class="err" *ngIf="error">{{ error }}</div>
+
+    <div class="comment" *ngFor="let c of comments">
+      <div class="c-top">
+        <strong>{{ c.author.name }}</strong>
+        <span class="c-time">{{ c.createdAt | date:'medium' }}</span>
+
+        <button
+          *ngIf="canDelete(c)"
+          mat-button
+          color="warn"
+          (click)="deleteComment(c.id)"
+        >
+          Delete
+        </button>
+      </div>
+      <div class="c-text">{{ c.text }}</div>
+    </div>
+
+    <form class="add" (ngSubmit)="addComment()">
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Write a comment…</mat-label>
+        <textarea
+          matInput
+          rows="3"
+          [(ngModel)]="newComment"
+          name="newComment"
+          [disabled]="posting"
+        ></textarea>
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="posting || !newComment.trim()"
+      >
+        {{ posting ? 'Posting…' : 'Post comment' }}
+      </button>
+    </form>
+  </div>
+</div>

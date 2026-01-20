@@ -1,0 +1,44 @@
+<div class="page">
+  <h1>Useful information</h1>
+  <p class="subtitle">
+    Important contacts, platforms, and resources for UVT students.
+  </p>
+
+  <mat-tab-group (selectedIndexChange)="selectCategory(categories[$event].key)">
+    <mat-tab *ngFor="let c of categories" [label]="c.label"></mat-tab>
+  </mat-tab-group>
+
+  <div class="search">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        [(ngModel)]="search"
+        (ngModelChange)="searchChanged()"
+        placeholder="Erasmus, StudentWeb, Info Center…"
+      />
+    </mat-form-field>
+  </div>
+
+  <mat-card *ngIf="error" class="alert">{{ error }}</mat-card>
+  <div *ngIf="loading" class="loading">Loading…</div>
+
+  <div class="grid" *ngIf="!loading">
+    <mat-card class="item" *ngFor="let it of items">
+      <mat-card-title>{{ it.title }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ it.content }}</p>
+      </mat-card-content>
+
+      <mat-card-actions *ngIf="it.link">
+        <a mat-button color="primary" [href]="it.link" target="_blank">
+          Open link
+        </a>
+      </mat-card-actions>
+    </mat-card>
+
+    <div class="empty" *ngIf="items.length === 0">
+      No results found.
+    </div>
+  </div>
+</div>

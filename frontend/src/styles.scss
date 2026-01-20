@@ -1,0 +1,187 @@
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+
+  @include mat.theme((
+    color: (
+      primary: mat.$blue-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+:root {
+  --uvt-yellow: #d7a91e;
+  --uvt-blue: #1f5aa6;
+}
+
+body {
+  color-scheme: light;
+
+  background-color: #f1f3d6;
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  background:
+    radial-gradient(1200px 600px at 20% 0%, rgba(242, 183, 5, 0.25), transparent 55%),
+    radial-gradient(1000px 500px at 90% 10%, rgba(31, 90, 166, 0.12), transparent 50%),
+    #a8c6f9;
+  margin: 0;
+  height: 100%;
+}
+
+.layout {
+  height: 100vh;
+}
+
+.page {
+  background: transparent;
+}
+
+mat-sidenav-container {
+  background: transparent !important;
+}
+
+mat-sidenav-content {
+  background: transparent !important;
+}
+
+.uvt-toolbar {
+  display: flex;
+  align-items: center;
+  min-height: 92px;
+  padding: 0 28px;
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  background: #ffffff;
+  border-bottom: 2px solid var(--uvt-blue);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.uvt-toolbar,
+.uvt-toolbar mat-icon,
+.uvt-toolbar button {
+  color: #1f1f1f;
+}
+
+.uvt-toolbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 140px;
+  height: 3px;
+  background: var(--uvt-yellow);
+}
+
+.uvt-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+}
+
+.uvt-logo {
+  width: 64px;
+  height: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.uvt-toolbar button[mat-icon-button] {
+  margin-left: auto;
+}
+
+.nav-sidenav {
+  width: 280px;
+  padding-top: 12px;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 16px 16px;
+}
+
+.side-nav a {
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.side-nav a:hover {
+  background: rgba(31, 90, 166, 0.10);
+}
+
+.page-wrap {
+  padding: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.brand-text {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  line-height: 1.05;
+  color: #1f1f1f;
+}
+
+.brand-blue {
+  color: var(--uvt-blue);
+}
+
+.brand-yellow {
+  color: var(--uvt-yellow);
+  font-weight: 800;
+}
+
+.app-footer {
+  margin-top: 60px;
+  padding: 24px 20px;
+  background: rgba(255, 255, 255, 0.65);
+  border-top: 2px solid var(--uvt-blue);
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.footer-left strong {
+  color: var(--uvt-blue);
+  font-weight: 900;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-right {
+    text-align: center;
+  }
+}

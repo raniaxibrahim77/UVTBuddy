@@ -1,0 +1,70 @@
+<mat-card style="margin: 16px;">
+  <h2>Events</h2>
+  <p *ngIf="!isAdmin">You can view upcoming university and study events.</p>
+  <p *ngIf="isAdmin">As an admin, you can create, edit, and delete events.</p>
+
+  <p *ngIf="error" style="color: #c62828; margin-top: 8px;">{{ error }}</p>
+  <p *ngIf="loading">Loading...</p>
+</mat-card>
+
+<mat-card *ngIf="isAdmin" style="margin: 16px;">
+  <h3>{{ editingId ? 'Edit event' : 'Create event' }}</h3>
+
+  <div style="display: grid; gap: 12px; grid-template-columns: 1fr 1fr;">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="form.title" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Location</mat-label>
+      <input matInput [(ngModel)]="form.location" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Starts at</mat-label>
+      <input matInput type="datetime-local" [(ngModel)]="form.startsAt" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ends at (optional)</mat-label>
+      <input matInput type="datetime-local" [(ngModel)]="form.endsAt" />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" style="width: 100%; margin-top: 8px;">
+    <mat-label>Description</mat-label>
+    <textarea matInput rows="4" [(ngModel)]="form.description"></textarea>
+  </mat-form-field>
+
+  <div style="display:flex; gap: 8px; margin-top: 8px;">
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="loading">
+      {{ editingId ? 'Save changes' : 'Create event' }}
+    </button>
+
+    <button mat-button (click)="cancelEdit()" *ngIf="editingId" [disabled]="loading">
+      Cancel
+    </button>
+  </div>
+</mat-card>
+
+
+<mat-card style="margin: 16px;" *ngIf="events.length === 0 && !loading">
+  <p>No events yet.</p>
+</mat-card>
+
+<mat-card style="margin: 16px;" *ngFor="let e of events">
+  <h3 style="margin-bottom: 4px;">{{ e.title }}</h3>
+  <div style="opacity: 0.85; margin-bottom: 8px;">
+    <div><strong>Starts:</strong> {{ fmt(e.startsAt) }}</div>
+    <div *ngIf="e.endsAt"><strong>Ends:</strong> {{ fmt(e.endsAt!) }}</div>
+    <div *ngIf="e.location"><strong>Location:</strong> {{ e.location }}</div>
+  </div>
+
+  <p *ngIf="e.description">{{ e.description }}</p>
+
+  <mat-divider *ngIf="isAdmin" style="margin: 12px 0;"></mat-divider>
+
+  <div *ngIf="isAdmin" style="display:flex; gap: 8px;">
+    <button mat-button (click)="startEdit(e)" [disabled]="loading">Edit</button>
+    <

@@ -1,0 +1,81 @@
+<div class="page">
+  <div class="header">
+    <div>
+      <h1>Onboarding checklist</h1>
+      <p class="subtitle">Complete these steps to get settled at UVT.</p>
+    </div>
+
+    <div class="right">
+      <mat-card class="langCard" appearance="outlined">
+        <mat-card-content>
+          <div class="langLabel">Language</div>
+
+          <mat-select
+            [value]="language"
+            (selectionChange)="onLanguageChange($event.value)"
+          >
+            <mat-option value="en">English</mat-option>
+            <mat-option value="ro">Română</mat-option>
+          </mat-select>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-card *ngIf="error" class="alert" appearance="outlined">
+    <mat-card-content>{{ error }}</mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="authLoading" class="card" appearance="outlined">
+    <mat-card-content>Checking login…</mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="!authLoading" class="card" appearance="outlined">
+    <mat-card-content>
+      <div class="progressRow">
+        <div class="progressText">
+          <div class="percent">{{ progressPercent }}%</div>
+          <div class="small">
+            {{ doneCount }} / {{ totalCount }}
+          </div>
+        </div>
+      </div>
+
+      <mat-progress-bar
+        mode="determinate"
+        [value]="progressPercent"
+      ></mat-progress-bar>
+
+      <div class="hint" *ngIf="!user">
+        You’re browsing as guest. Login on the Home page to save progress.
+      </div>
+
+      <div class="loading" *ngIf="loading">Loading checklist…</div>
+
+      <div class="list" *ngIf="!loading">
+        <mat-card class="item" *ngFor="let it of items" appearance="outlined">
+          <mat-card-content class="itemRow">
+            <mat-checkbox
+              [checked]="it.done"
+              (change)="toggle(it)"
+              [disabled]="it.saving || !user"
+            >
+              <div class="itemText">
+                <div class="itemTitle">{{ it.title }}</div>
+                <div class="itemDesc" *ngIf="it.description">
+                  {{ it.description }}
+                </div>
+              </div>
+            </mat-checkbox>
+
+            <div class="saving" *ngIf="it.saving">Saving…</div>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="empty" *ngIf="items.length === 0 && !loading">
+          No checklist items found.
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

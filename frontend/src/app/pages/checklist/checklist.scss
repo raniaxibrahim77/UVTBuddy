@@ -1,0 +1,128 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 18px 0 14px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.right {
+  min-width: 220px;
+}
+
+.langCard {
+  border-radius: 16px;
+}
+
+.langLabel {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+.card {
+  border-radius: 16px;
+}
+
+.alert {
+  border-radius: 16px;
+  margin-bottom: 12px;
+  border-color: rgba(255, 0, 0, 0.25);
+  background: rgba(255, 0, 0, 0.06);
+}
+
+.progressRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.percent {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.small {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.loading {
+  margin-top: 14px;
+  opacity: 0.8;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.item {
+  border-radius: 14px;
+}
+
+.itemRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.itemText {
+  display: inline-block;
+}
+
+.itemTitle {
+  font-weight: 700;
+}
+
+.itemDesc {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.saving {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.empty {
+  opacity: 0.75;
+  padding: 12px 4px;
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .right {
+    min-width: auto;
+  }
+}

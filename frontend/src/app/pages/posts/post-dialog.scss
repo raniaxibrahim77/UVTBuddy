@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.images {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.img {
+  width: 280px;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.err {
+  margin: 8px 0;
+}
+
+.comment {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.c-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.c-time {
+  margin-left: auto;
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.add {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.full {
+  width: 100%;
+}

@@ -1,0 +1,55 @@
+.page-card {
+  margin: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0 0 6px;
+}
+
+.meta {
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.desc {
+  margin-top: 10px;
+}
+
+.error {
+  color: #c62828;
+  margin: 8px 0 0;
+}
+
+.hint {
+  opacity: 0.8;
+}
+
+.actions .mini {
+  margin-bottom: 8px;
+  font-size: 13px;
+  opacity: 0.8;
+}

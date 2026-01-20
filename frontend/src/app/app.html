@@ -1,0 +1,61 @@
+<mat-sidenav-container class="layout">
+  <mat-sidenav
+    #menu
+    position="end"
+    mode="over"
+    class="nav-sidenav"
+  >
+    <nav class="side-nav">
+  <a mat-button routerLink="/" (click)="menu.close()">Home</a>
+  <a mat-button routerLink="/checklist" (click)="menu.close()">Checklist</a>
+  <a mat-button routerLink="/info" (click)="menu.close()">UVT Info</a>
+  <a mat-button routerLink="/posts" (click)="menu.close()">Ask & Share</a>
+  <a mat-button routerLink="/sessions" (click)="menu.close()">Study Sessions</a>
+    <a mat-button routerLink="/events" (click)="menu.close()">Events</a> 
+
+</nav>
+
+  </mat-sidenav>
+
+      <mat-sidenav-content>
+        <mat-toolbar  class="uvt-toolbar">
+          <div class="uvt-brand">
+      <img
+        src="/Logo-emblema-UVT-14.png"
+        alt="Universitatea de Vest din Timișoara"
+        class="uvt-logo"
+      />
+      <span class="brand-text">
+  <span class="brand-blue">Universitatea de Vest</span>
+  <span class="brand-yellow">din Timișoara</span>
+</span>
+
+    </div>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button (click)="menu.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="page-wrap">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<footer class="app-footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <strong>UVT Buddy</strong><br />
+      Student integration platform
+    </div>
+
+    <div class="footer-right">
+      Student project • Universitatea de Vest din Timișoara<br />
+      Faculty of Mathematics and Informatics • 2026
+    </div>
+  </div>
+</footer>
+

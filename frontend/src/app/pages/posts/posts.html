@@ -1,0 +1,193 @@
+<div class="page">
+  <div class="header">
+    <div>
+      <h1>Ask & Share</h1>
+      <p class="subtitle">Notes, questions and advice shared by students.</p>
+    </div>
+
+    <button mat-stroked-button (click)="load()" [disabled]="loading">
+      Refresh
+    </button>
+  </div>
+
+  <mat-card *ngIf="error" class="alert" appearance="outlined">
+    <mat-card-content>{{ error }}</mat-card-content>
+  </mat-card>
+
+  <!-- Filters -->
+  <mat-card class="card" appearance="outlined">
+    <mat-card-content class="filters">
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          [(ngModel)]="search"
+          (ngModelChange)="searchChanged()"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="typeFilter" (selectionChange)="load()">
+          <mat-option value="ALL">All</mat-option>
+          <mat-option value="QUESTION">Questions</mat-option>
+          <mat-option value="NOTE">Class Notes</mat-option>
+          <mat-option value="TIP">Advice</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Create post -->
+  <mat-card class="card" appearance="outlined">
+    <mat-card-title>Create a post</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="!canCreate" class="hint">
+        Login on the Home page to create posts.
+      </div>
+
+      <form class="form" (ngSubmit)="create()">
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Post type</mat-label>
+            <mat-select [(ngModel)]="type" name="type" [disabled]="!canCreate || loading">
+              <mat-option value="QUESTION">Question</mat-option>
+              <mat-option value="NOTE">Note</mat-option>
+              <mat-option value="TIP">Advice</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              [(ngModel)]="title"
+              name="title"
+              [disabled]="!canCreate || loading"
+            />
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            rows="4"
+            [(ngModel)]="description"
+            name="description"
+            [disabled]="!canCreate || loading"
+          ></textarea>
+        </mat-form-field>
+
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Course</mat-label>
+            <input
+              matInput
+              [(ngModel)]="course"
+              name="course"
+              [disabled]="!canCreate || loading"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Major</mat-label>
+            <input
+              matInput
+              [(ngModel)]="major"
+              name="major"
+              [disabled]="!canCreate || loading"
+            />
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tags (comma separated)</mat-label>
+          <input
+            matInput
+            [(ngModel)]="tagsText"
+            name="tagsText"
+            [disabled]="!canCreate || loading"
+          />
+        </mat-form-field>
+
+        <!-- Photos -->
+        <div class="files">
+          <label class="file-label">
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              (change)="onFilesSelected($event)"
+              [disabled]="!canCreate || loading"
+            />
+          </label>
+
+          <div class="file-count" *ngIf="selectedFiles.length">
+            {{ selectedFiles.length }} photo(s) selected
+          </div>
+        </div>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!canCreate || creating || loading"
+        >
+          {{ creating ? 'Posting...' : 'Post' }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- List -->
+  <div *ngIf="loading" class="loading">Loading…</div>
+
+  <div class="grid" *ngIf="!loading">
+<mat-card class="post" *ngFor="let p of posts" appearance="outlined" (click)="openPost(p)">
+      <div class="post-head">
+<div class="type-badge">{{ p.type === 'TIP' ? 'ADVICE' : p.type }}</div>
+
+        <button
+          *ngIf="isAdmin"
+          mat-stroked-button
+          color="warn"
+          (click)="$event.stopPropagation(); deletePost(p.id)"
+        >
+          Delete
+        </button>
+      </div>
+
+      <mat-card-title>{{ p.title }}</mat-card-title>
+      <mat-card-subtitle>
+        {{ p.author.name }} • {{ p.createdAt | date:'medium' }}
+      </mat-card-subtitle>
+
+      <mat-card-content>
+        <p class="desc">{{ p.description }}</p>
+
+        <div class="meta" *ngIf="p.course || p.major">
+          <span *ngIf="p.course">Course: {{ p.course }}</span>
+          <span *ngIf="p.major">Major: {{ p.major }}</span>
+        </div>
+
+        <mat-chip-set *ngIf="p.tags?.length">
+          <mat-chip *ngFor="let t of p.tags">{{ t }}</mat-chip>
+        </mat-chip-set>
+
+        <div class="images" *ngIf="p.imageUrls?.length">
+          <img
+            class="thumb"
+            *ngFor="let img of p.imageUrls"
+            [src]="'http://localhost:8080' + img"
+            alt="post image"
+          />
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="empty" *ngIf="posts.length === 0">
+      No posts found.
+    </div>
+  </div>
+</div>
