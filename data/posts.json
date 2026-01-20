@@ -1,0 +1,210 @@
+[ {
+  "id" : 8,
+  "title" : "helpp",
+  "description" : "i need help with the p3 project, will anyone give me a hand?",
+  "course" : "p3",
+  "major" : "CS",
+  "createdAt" : "2026-01-06T23:00:37.795346",
+  "tags" : [ ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 2,
+    "name" : "Ibrahim",
+    "email" : "ibrahim@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "ADMIN"
+  },
+  "type" : "NOTE",
+  "language" : null
+}, {
+  "id" : 9,
+  "title" : "P3 help",
+  "description" : "Do you know when is the project due?",
+  "course" : "P3",
+  "major" : "CS",
+  "createdAt" : "2026-01-06T23:10:26.899659",
+  "tags" : [ ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 2,
+    "name" : "Ibrahim",
+    "email" : "ibrahim@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "ADMIN"
+  },
+  "type" : "NOTE",
+  "language" : null
+}, {
+  "id" : 13,
+  "title" : "Schedule",
+  "description" : "where do i find the year 1 cs schedule?",
+  "course" : null,
+  "major" : "CS",
+  "createdAt" : "2026-01-10T19:03:48.847975",
+  "tags" : [ ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 2,
+    "name" : "Ibrahim",
+    "email" : "ibrahim@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "ADMIN"
+  },
+  "type" : "NOTE",
+  "language" : null
+}, {
+  "id" : 18,
+  "title" : "workkk pls",
+  "description" : "lalala",
+  "course" : null,
+  "major" : null,
+  "createdAt" : "2026-01-10T20:08:23.715876",
+  "tags" : [ ],
+  "imageUrls" : [ "/uploads/posts/18/368bf0a6-ea55-4e1a-ad4f-9c29b4d2b4b1-contact.jpg" ],
+  "author" : {
+    "id" : 2,
+    "name" : "Ibrahim",
+    "email" : "ibrahim@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "ADMIN"
+  },
+  "type" : "NOTE",
+  "language" : null
+}, {
+  "id" : 19,
+  "title" : "work",
+  "description" : "go kylie go",
+  "course" : null,
+  "major" : null,
+  "createdAt" : "2026-01-10T20:14:00.791732",
+  "tags" : [ ],
+  "imageUrls" : [ "/uploads/posts/19/2991f848-efd2-4c75-a752-7128d80039eb-events.jpg", "/uploads/posts/19/058f616c-1469-45ef-a0e0-18d8869fbb7e-contact.jpg" ],
+  "author" : {
+    "id" : 2,
+    "name" : "Ibrahim",
+    "email" : "ibrahim@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "ADMIN"
+  },
+  "type" : "NOTE",
+  "language" : null
+}, {
+  "id" : 20,
+  "title" : "help",
+  "description" : "do i need atendaces for the pts course?",
+  "course" : "pts",
+  "major" : "cs",
+  "createdAt" : "2026-01-11T11:31:42.634241",
+  "tags" : [ ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 2,
+    "name" : "Ibrahim",
+    "email" : "ibrahim@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "ADMIN"
+  },
+  "type" : "QUESTION",
+  "language" : null
+}, {
+  "id" : 21,
+  "title" : "jshxh",
+  "description" : "ghjklkjvxjnc",
+  "course" : "OS",
+  "major" : "CS",
+  "createdAt" : "2026-01-12T13:00:16.559093",
+  "tags" : [ ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 2,
+    "name" : "Ibrahim",
+    "email" : "ibrahim@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "ADMIN"
+  },
+  "type" : "QUESTION",
+  "language" : null
+}, {
+  "id" : 22,
+  "title" : "testt",
+  "description" : "fstdyd",
+  "course" : "OS",
+  "major" : "cs",
+  "createdAt" : "2026-01-12T13:29:12.350506",
+  "tags" : [ ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 5,
+    "name" : "Raul",
+    "email" : "raul@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "STUDENT"
+  },
+  "type" : "QUESTION",
+  "language" : null
+}, {
+  "id" : 23,
+  "title" : "test2",
+  "description" : "image",
+  "course" : "OS",
+  "major" : "CS",
+  "createdAt" : "2026-01-12T13:29:40.743148",
+  "tags" : [ ],
+  "imageUrls" : [ "/uploads/posts/23/77b50899-40ca-4308-b9c4-9beaec804cb1-contact.jpg" ],
+  "author" : {
+    "id" : 5,
+    "name" : "Raul",
+    "email" : "raul@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "STUDENT"
+  },
+  "type" : "NOTE",
+  "language" : null
+}, {
+  "id" : 24,
+  "title" : "do this",
+  "description" : "do this now",
+  "course" : "pp",
+  "major" : "CS",
+  "createdAt" : "2026-01-12T14:04:18.439211",
+  "tags" : [ "pp" ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 5,
+    "name" : "Raul",
+    "email" : "raul@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "STUDENT"
+  },
+  "type" : "QUESTION",
+  "language" : null
+}, {
+  "id" : 25,
+  "title" : "dts",
+  "description" : "sfgbgvfds",
+  "course" : "sdfgv",
+  "major" : "CS",
+  "createdAt" : "2026-01-12T14:04:37.180979",
+  "tags" : [ ],
+  "imageUrls" : [ ],
+  "author" : {
+    "id" : 5,
+    "name" : "Raul",
+    "email" : "raul@test.com",
+    "major" : null,
+    "availability" : null,
+    "role" : "STUDENT"
+  },
+  "type" : "QUESTION",
+  "language" : null
+} ]
